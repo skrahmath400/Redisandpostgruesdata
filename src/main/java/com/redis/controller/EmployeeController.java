@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.redis.dto.RoleScreen;
 import com.redis.entity.Employee;
 import com.redis.entity.Overalldata;
 import com.redis.entity.Roledata;
@@ -69,13 +70,13 @@ public class EmployeeController {
 //		return employeeService.getEmployeeData(empid, password);
 //	}
 
-	@GetMapping("/overalldatabytable")
+	@GetMapping("/overalldatabyview")
 	public List<Overalldata> getoveralldata(@RequestParam int id, @RequestParam String passw) {
 		return employeeService.getsomedata(id, passw);
 
 	}
 
-	@GetMapping("/overallexampledatabyview")
+	@GetMapping("/overallexampledatabytable")
 	public ResponseEntity<Object> getsomedata(@RequestParam int id, @RequestParam String passw) {
 		try {
 			List<Overalldata> data = employeeService.getsomedata(id, passw);
@@ -86,6 +87,19 @@ public class EmployeeController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
 		}
 	}
+
 //	@GetMapping("/role/screenpermission/")
 //	public List<Overalldata> getroleandscreenpermssion()
+	@GetMapping("/getroleandscreen")
+	public ResponseEntity<Object> getroleandscreen(@RequestParam String rolename) {
+		try {
+			List<RoleScreen> data = employeeService.getroleandscreen(rolename);
+			return ResponseEntity.ok(data);
+		} catch (DataNotFoundException ex) {
+			Map<String, String> error = new HashMap<>();
+			error.put("message", ex.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+		}
+	}
+
 }

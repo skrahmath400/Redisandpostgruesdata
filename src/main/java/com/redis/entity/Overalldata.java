@@ -1,13 +1,13 @@
 package com.redis.entity;
 
 import java.io.Serializable;
-//import org.hibernate.annotations.Type;
 
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.Immutable;
-import org.springframework.data.annotation.TypeAlias;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
+import io.hypersistence.utils.hibernate.type.json.JsonNodeBinaryType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,13 +34,19 @@ public class Overalldata implements Serializable {
     @Column(name="password")
     private String password;
 
+    @Column(name = "first_name") // Explicit mapping if column name differs; adjust if needed
     private String first_name;
+
+    @Column(name = "last_name")
     private String last_name;
-    private String role_name;
-    
+
+    @Column(name = "role_name")
+    private String  roleName;
+//    
 
     // Use JsonNode for parsing JSON data in a structured way
-    @Column(name="screen_permission", columnDefinition = "json")
-    private JsonNode screen_permission;  // This stores the JSON object directly, no need to handle it as a string
+    @Type(JsonNodeBinaryType.class)
+    @Column(name="screen_permissions", columnDefinition = "jsonb")
+    private JsonNode screen_permissions;  // This stores the JSON object directly, no need to handle it as a string
     
 }
