@@ -41,22 +41,22 @@ public class EmployeeController {
 		return employeeService.getallroles();
 	}
 
-	@GetMapping("/datacall")
-	public String getdata() {
-		return employeeService.addingdata();
-	}
-
-	@GetMapping("/getrolesdata")
-	public Roledata getroledata(@RequestParam String name) {
-		return employeeService.findbyrolename(name);
-
-	}
-
-	@GetMapping("/getallrolescheckanddataacess/{rolename}/{id}")
-	public Optional<Employee> getallroleanddata(@PathVariable String rolename, @PathVariable Long id) {
-		return employeeService.getallroleanddata(rolename, id);
-
-	}
+//	@GetMapping("/datacall")
+//	public String getdata() {
+//		return employeeService.addingdata();
+//	}
+//
+//	@GetMapping("/getrolesdata")
+//	public Roledata getroledata(@RequestParam String name) {
+//		return employeeService.findbyrolename(name);
+//
+//	}
+//
+//	@GetMapping("/getallrolescheckanddataacess/{rolename}/{id}")
+//	public Optional<Employee> getallroleanddata(@PathVariable String rolename, @PathVariable Long id) {
+//		return employeeService.getallroleanddata(rolename, id);
+//
+//	}
 //
 //	@GetMapping("/alldata")
 //	public Overalldata getwholedata(@RequestParam int empid, @RequestParam String password) {

@@ -48,5 +48,5 @@ public class Overalldata implements Serializable {
     @Type(JsonNodeBinaryType.class)
     @Column(name="screen_permissions", columnDefinition = "jsonb")
     private JsonNode screen_permissions;  // This stores the JSON object directly, no need to handle it as a string
-    
+   
 }
