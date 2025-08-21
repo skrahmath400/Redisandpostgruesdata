@@ -20,6 +20,7 @@ import com.redis.entity.Overalldata;
 	    Optional<Employee> findByIdWithRoles(@Param("id") Long id);
 	    @Query("SELECT o FROM Overalldata o WHERE o.employeeId = :empId AND o.password = :password")
 	    List<Overalldata> findUserByEmployOveralldata(@Param("empId") int empId, @Param("password") String password);
+	    Optional<Overalldata> findByEmployeeId(int employeeId);
 	
 	//  @Query("Select * FROM Overallexample ov join Employee e ov.employee_id=e.employee_id  where e.employeeId=:empId AND e.password = :password") 
 	//  Overallexample findUserByEmployOverallexample(@Param("empId") int empId, @Param("password") String password);

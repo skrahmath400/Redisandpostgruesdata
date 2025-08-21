@@ -76,13 +76,13 @@ public class EmployeeService {
         return template;
     }
 
-    @Cacheable(value = "employeeCache", key = "#employeeId")
-    public Employee getEmployeeWithRoles(Long employeeId) {
-        System.out.println("⚠️ Fetching employee " + employeeId + " from DB.");
-        return employeeRepository
-            .findByIdWithRoles(employeeId)
-            .orElseThrow(() -> new EntityNotFoundException("Employee not found"));
-    }
+//    @Cacheable(value = "employeeCache", key = "#employeeId")
+//    public Employee getEmployeeWithRoles(Long employeeId) {
+//        System.out.println("⚠️ Fetching employee " + employeeId + " from DB.");
+//        return employeeRepository
+//            .findByIdWithRoles(employeeId)
+//            .orElseThrow(() -> new EntityNotFoundException("Employee not found"));
+//    }
 
     public List<Overalldata> getsomedata(int empid, String pass) {
         String cacheKey = "tabledata::" + empid + "-" + pass;
